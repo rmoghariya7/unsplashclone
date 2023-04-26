@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main_outer_container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+@import "./navbar";
+@import "./subNavbar";
+@import "./mainBanner";
+@import "./hearosection";
+@import "./portal";

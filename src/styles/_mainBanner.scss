@@ -1,0 +1,85 @@
+.main-banner {
+  text-align: left;
+  color: #fff;
+  background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    url("../Assets/demo1.jpg");
+  height: 600px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  & .center-div {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-direction: column;
+    max-width: 950px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 10rem;
+
+    & h1 {
+      font-weight: 700;
+      font-size: 46px;
+    }
+  }
+
+  & .heading {
+    margin-top: 1rem;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  & .heading2 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .search-bar {
+    margin-top: 2rem;
+    display: flex;
+    max-width: 853px;
+    width: 100%;
+    gap: 1rem;
+    background-color: #eee;
+    border-radius: 0.5rem;
+    padding: 1rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+
+    & svg {
+      fill: #767676;
+    }
+    & input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background-color: transparent;
+    }
+  }
+  & .main-banner-footer {
+    font-size: 13px;
+    color: #ffffff8c;
+    padding: 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    & span {
+      color: #fff;
+    }
+    & .license {
+      place-self: center;
+    }
+  }
+}

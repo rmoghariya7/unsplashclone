@@ -1,0 +1,129 @@
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.image-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.single-image-portal {
+  border-radius: 0.2rem;
+  padding: 1rem;
+  max-width: 1450px;
+  height: 95%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  background-color: #fff;
+  z-index: 99999;
+  position: fixed;
+
+  & .profile-pic {
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    & .img-wrapper {
+      max-width: 32px;
+      max-height: 32px;
+    }
+    & img {
+      width: 100%;
+      border-radius: 50%;
+    }
+    & .user-info {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      flex-direction: column;
+    }
+  }
+
+  & .cta {
+    display: flex;
+    gap: 0.5rem;
+
+    & .img-like,
+    & .img-plus {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 11px;
+      background-color: #fff;
+      outline: none;
+      border: 1px solid rgba(118, 118, 118, 1);
+
+      fill: #767676;
+      border-radius: 0.2rem;
+
+      &:hover {
+        border: 1px solid black;
+        fill: black;
+      }
+    }
+
+    & .download-btn {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #fff;
+      outline: none;
+      border: 1px solid rgba(118, 118, 118, 1);
+      color: #767676;
+      fill: #767676;
+      border-radius: 0.2rem;
+      &:hover {
+        border: 1px solid black;
+        color: black;
+        .download-text {
+          border-right: 0.5px solid black;
+        }
+      }
+      & .download-text {
+        padding: 0 11px;
+        height: 100%;
+        line-height: 33px;
+        border-right: 0.5px solid #d1d1d1;
+      }
+
+      & .downlaod-svg {
+        border-left: 0.5px solid #d1d1d1;
+        padding: 8px;
+        &:hover {
+          fill: black;
+        }
+      }
+    }
+  }
+
+  .main-image-wrapper {
+    width: 1050px;
+    height: 750px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
+  }
+}

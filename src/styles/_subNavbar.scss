@@ -1,0 +1,78 @@
+.subNavWrapper {
+  display: flex;
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 4px -6px #00000014;
+  color: #767676;
+  padding: 0 1rem;
+  font-size: 14px;
+  position: sticky;
+  top: 58px;
+  background-color: #fff;
+  z-index: 100;
+
+  & ul li {
+    position: relative;
+    padding: 1rem 0;
+    cursor: pointer;
+  }
+
+  & ul li.active::before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 2px;
+    background-color: black;
+    bottom: 0;
+  }
+
+  & .static-ul {
+    padding: 0;
+  }
+
+  .dynamic-ul,
+  .static-ul {
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+    gap: 2rem;
+    white-space: nowrap;
+  }
+
+  .dynamic-ul {
+    overflow-x: scroll;
+    position: relative;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .vline {
+    width: 1px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  & .arrow-right {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  & .svg-wrapper {
+    position: relative;
+
+    & svg {
+      background: white;
+    }
+  }
+  & .arrow-left {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
