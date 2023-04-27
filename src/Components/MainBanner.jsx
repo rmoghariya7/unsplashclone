@@ -1,9 +1,14 @@
 import React from "react";
 
-const MainBanner = ({ imgCategory }) => {
+const MainBanner = ({ imgCategory, image }) => {
   return (
     <>
-      <div className="main-banner">
+      <div
+        className="main-banner"
+        style={{
+          backgroundImage: `linear-gradient(90deg,rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%),url(${image?.urls?.full})`,
+        }}
+      >
         <div className="center-div">
           <h1>Unsplash</h1>
           <p className="heading">The internet’s source for visuals.</p>

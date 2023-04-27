@@ -211,17 +211,16 @@
 .main-banner {
   text-align: left;
   color: #fff;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%), url("../Assets/demo1.jpg");
   height: 600px;
   width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   margin-top: auto;
   margin-bottom: auto;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .main-banner .center-div {
   display: flex;
@@ -304,7 +303,10 @@
 .grid-container div:hover .button-wrapper {
   opacity: 1;
 }
-.grid-container div:hover .user-details button {
+.grid-container div:hover .user-details a {
+  opacity: 1;
+}
+.grid-container div:hover .user-details .inner-user-div {
   opacity: 1;
 }
 .grid-container div .button-wrapper {
@@ -321,11 +323,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 11px;
+  padding: 0 11px;
   background-color: #fff;
   border: 1px solid #d1d1d1;
-  color: #767676;
+  fill: #767676;
   border-radius: 0.5rem;
+  font-size: 14px;
+  height: 32px;
+  line-height: 30px;
+  padding: 0 11px;
 }
 .grid-container div .user-details {
   padding: 0 1rem;
@@ -342,6 +348,8 @@
   justify-content: baseline;
   align-items: center;
   margin: 0;
+  gap: 1rem;
+  opacity: 0;
 }
 .grid-container div .user-details .inner-user-div img {
   width: 35px;
@@ -355,7 +363,7 @@
   padding: 8px 11px;
   background-color: #fff;
   border: 1px solid #d1d1d1;
-  color: #767676;
+  fill: #767676;
   border-radius: 0.5rem;
   opacity: 0;
   transition: all 100ms ease-in-out;
@@ -374,6 +382,15 @@
   z-index: 9999;
 }
 
+.outer {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  inset: 0;
+  z-index: 999;
+}
+
 .image-info {
   display: flex;
   justify-content: space-between;
@@ -381,18 +398,26 @@
 }
 
 .single-image-portal {
-  border-radius: 0.2rem;
+  z-index: 9999;
+  border-top-right-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
   padding: 1rem;
-  max-width: 1450px;
-  height: 95%;
+  max-width: 1650px;
   width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   margin: 0 auto;
+  margin-top: 16px;
   background-color: #fff;
+  inset: 0;
   z-index: 99999;
-  position: fixed;
+  color: #767676;
+}
+.single-image-portal::-webkit-scrollbar, .single-image-portal::-webkit-scrollbar-thumb {
+  width: 4px;
+  margin: 1rem;
+}
+.single-image-portal::-webkit-scrollbar-thumb {
+  background-color: #d1d1d1;
+  border-radius: 2rem;
 }
 .single-image-portal .profile-pic {
   gap: 8px;
@@ -419,15 +444,18 @@
 }
 .single-image-portal .cta .img-like, .single-image-portal .cta .img-plus {
   cursor: pointer;
+  padding: 0 11px;
+  height: 32px;
   display: flex;
+  gap: 5px;
   justify-content: center;
   align-items: center;
-  padding: 5px 11px;
   background-color: #fff;
-  outline: none;
-  border: 1px solid rgb(118, 118, 118);
-  fill: #767676;
-  border-radius: 0.2rem;
+  border-radius: 4px;
+  color: #767676;
+  fill: currentColor;
+  background: transparent;
+  border: 1px solid #d1d1d1;
 }
 .single-image-portal .cta .img-like:hover, .single-image-portal .cta .img-plus:hover {
   border: 1px solid black;
@@ -435,15 +463,21 @@
 }
 .single-image-portal .cta .download-btn {
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  outline: none;
-  border: 1px solid rgb(118, 118, 118);
   color: #767676;
   fill: #767676;
   border-radius: 0.2rem;
+  padding: 0 11px;
+  height: 32px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  color: #767676;
+  fill: currentColor;
+  background: transparent;
+  border: 1px solid #d1d1d1;
 }
 .single-image-portal .cta .download-btn:hover {
   border: 1px solid black;
@@ -455,20 +489,20 @@
 .single-image-portal .cta .download-btn .download-text {
   padding: 0 11px;
   height: 100%;
-  line-height: 33px;
+  line-height: 29px;
   border-right: 0.5px solid #d1d1d1;
 }
 .single-image-portal .cta .download-btn .downlaod-svg {
-  border-left: 0.5px solid #d1d1d1;
   padding: 8px;
 }
 .single-image-portal .cta .download-btn .downlaod-svg:hover {
   fill: black;
 }
 .single-image-portal .main-image-wrapper {
-  width: 1050px;
+  max-width: 1050px;
   height: 750px;
   margin: 0 auto;
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -479,4 +513,75 @@
   max-height: 100%;
   width: auto;
   height: auto;
+}
+.single-image-portal .image-description {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 24px;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: fit-content(400px) 1fr auto;
+}
+.single-image-portal .image-description .img-desc-1 {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, 160px));
+}
+.single-image-portal .image-description .img-desc-1 .view {
+  display: flex;
+  flex-direction: column;
+}
+.single-image-portal .image-description .img-desc-1 .image-downlaods {
+  display: flex;
+  flex-direction: column;
+}
+.single-image-portal .image-description .img-desc-3 {
+  grid-row: 1/2;
+  grid-column: 3/4;
+  display: grid;
+  grid-auto-flow: column;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+.single-image-portal .image-description .img-desc-3 button {
+  padding: 0 11px;
+  height: 32px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  color: #767676;
+  fill: currentColor;
+  background: transparent;
+  border: 1px solid #d1d1d1;
+}
+.single-image-portal .image-description .img-desc-3 button:hover {
+  color: black;
+  border: 1px solid black;
+}
+.single-image-portal .image-description .img-desc-2 {
+  display: grid;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  row-gap: 4px;
+}
+.single-image-portal .image-description .img-desc-2 .pub-date, .single-image-portal .image-description .img-desc-2 .pub-policy, .single-image-portal .image-description .img-desc-2 .camera-specs, .single-image-portal .image-description .img-desc-2 .img-location {
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  gap: 1rem;
+}
+.single-image-portal .related-images {
+  margin-inline: auto;
+  max-width: 1320px;
+}
+.single-image-portal .related-images h4 {
+  font-size: 18px;
+  margin-block: 12px;
+  padding-top: 5rem;
+  font-weight: 400;
 }/*# sourceMappingURL=main.css.map */

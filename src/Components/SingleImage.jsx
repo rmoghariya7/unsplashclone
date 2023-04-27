@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Portal from "./Portal";
+import UserCollection from "./UserCollection";
 
 const SingleImage = ({
   image,
@@ -13,26 +14,30 @@ const SingleImage = ({
   const observer = useRef();
   const lastImgRef = useCallback(
     (node) => {
-      if (loading) return;
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          setPageNumber((prev) => prev + 1);
-        }
-      });
-      if (node) observer.current.observe(node);
+      if (setPageNumber) {
+        if (loading) return;
+        if (observer.current) observer.current.disconnect();
+        observer.current = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            setPageNumber((prev) => prev + 1);
+          }
+        });
+        if (node) observer.current.observe(node);
+      }
     },
     [loading, setPageNumber]
   );
 
   useEffect(() => {
-    const body = document.querySelector("body");
-    body.style.overflow = portalOpen ? "hidden" : "auto";
+    if (setPageNumber) {
+      const body = document.querySelector("body");
+      body.style.overflow = portalOpen ? "hidden" : "auto";
+    }
   }, [portalOpen]);
 
   return (
     <>
-      {portalOpen && <Portal image={image} setPortalOpen={setPortalOpen} />}
+      {portalOpen && <Portal id={image.id} setPortalOpen={setPortalOpen} />}
       {index === lastImage ? (
         <div ref={lastImgRef} className="last">
           <img src={image?.urls?.regular} alt="img" />
@@ -42,7 +47,6 @@ const SingleImage = ({
               <svg
                 width="15"
                 height="15"
-                class="TrVF8"
                 viewBox="0 0 24 24"
                 version="1.1"
                 aria-hidden="false"
@@ -55,7 +59,6 @@ const SingleImage = ({
               <svg
                 width="15"
                 height="15"
-                class="utUL6"
                 viewBox="0 0 24 24"
                 version="1.1"
                 aria-hidden="false"
@@ -75,7 +78,6 @@ const SingleImage = ({
               <svg
                 width="15"
                 height="15"
-                class="c_c7b"
                 viewBox="0 0 24 24"
                 version="1.1"
                 aria-hidden="false"
@@ -95,7 +97,6 @@ const SingleImage = ({
               <svg
                 width="15"
                 height="15"
-                class="TrVF8"
                 viewBox="0 0 24 24"
                 version="1.1"
                 aria-hidden="false"
@@ -108,7 +109,6 @@ const SingleImage = ({
               <svg
                 width="15"
                 height="15"
-                class="utUL6"
                 viewBox="0 0 24 24"
                 version="1.1"
                 aria-hidden="false"
@@ -124,11 +124,19 @@ const SingleImage = ({
               <img src={image?.user?.profile_image?.small} alt="" />
               <span>{image?.user?.first_name}</span>
             </div>
-            <button className="download-btn">
+
+            <a
+              className="download-btn"
+              download
+              href={`${image.links.download}&force=true`}
+              rel="noreferrer"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <svg
                 width="15"
                 height="15"
-                class="c_c7b"
                 viewBox="0 0 24 24"
                 version="1.1"
                 aria-hidden="false"
@@ -136,7 +144,11 @@ const SingleImage = ({
                 <desc lang="en-US">Arrow pointing down</desc>
                 <path d="m19.35 11.625-5.85 5.4V1.5h-3v15.525l-5.85-5.4-2.025 2.25L12 22.425l9.375-8.55-2.025-2.25Z"></path>
               </svg>
-            </button>
+            </a>
+          </div>
+
+          <div className="user-collections">
+            <UserCollection />
           </div>
         </div>
       )}

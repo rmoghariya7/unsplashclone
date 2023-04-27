@@ -27,8 +27,14 @@ function App() {
   return (
     <>
       <Navbar onChange={handleChange} />
-      <SubNavBar CATEGORIES={CATEGORIES} setImgCategory={setImgCategory} />
-      <MainBanner imgCategory={imgCategory} />
+      <SubNavBar
+        CATEGORIES={CATEGORIES}
+        setQuery={setQuery}
+        setImgCategory={setImgCategory}
+        setPageNumber={setPageNumber}
+        setImages={setImages}
+      />
+      <MainBanner imgCategory={imgCategory} image={images[0]} />
       <main className="main_outer_container">
         <HeroSection
           images={images}

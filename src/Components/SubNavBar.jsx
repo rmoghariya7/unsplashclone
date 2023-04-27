@@ -1,6 +1,12 @@
 import React, { useRef, useState } from "react";
-
-const SubNavBar = ({ CATEGORIES, setImgCategory }) => {
+import { v4 as uuidv4 } from "uuid";
+const SubNavBar = ({
+  CATEGORIES,
+  setImgCategory,
+  setQuery,
+  setPageNumber,
+  setImages,
+}) => {
   const [active, setActive] = useState(-1);
   const subNavRef = useRef();
   const subNavRef2 = useRef();
@@ -9,6 +15,9 @@ const SubNavBar = ({ CATEGORIES, setImgCategory }) => {
 
   const handleClick = (index) => {
     setImgCategory(CATEGORIES[index]);
+    setQuery(CATEGORIES[index]);
+    setPageNumber(1);
+    setImages([]);
     setActive(index);
   };
 
@@ -70,7 +79,7 @@ const SubNavBar = ({ CATEGORIES, setImgCategory }) => {
               ref={subNavRef}
               className={index === active ? "active" : ""}
               onClick={() => handleClick(index)}
-              key={index}
+              key={uuidv4()}
             >
               {category}
             </li>
@@ -79,7 +88,7 @@ const SubNavBar = ({ CATEGORIES, setImgCategory }) => {
               ref={subNavRef2}
               className={index === active ? "active" : ""}
               onClick={() => handleClick(index)}
-              key={index}
+              key={uuidv4()}
             >
               {category}
             </li>
@@ -87,7 +96,7 @@ const SubNavBar = ({ CATEGORIES, setImgCategory }) => {
             <li
               className={index === active ? "active" : ""}
               onClick={() => handleClick(index)}
-              key={index}
+              key={uuidv4()}
             >
               {category}
             </li>

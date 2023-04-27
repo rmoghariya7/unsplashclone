@@ -1,22 +1,18 @@
 .main-banner {
   text-align: left;
   color: #fff;
-  background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.3) 100%
-    ),
-    url("../Assets/demo1.jpg");
+
   height: 600px;
   width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+
   margin-top: auto;
   margin-bottom: auto;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
   & .center-div {
     display: flex;

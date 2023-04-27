@@ -10,6 +10,15 @@
   justify-content: center;
   z-index: 9999;
 }
+
+.outer {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  inset: 0;
+  z-index: 999;
+}
 .image-info {
   display: flex;
   justify-content: space-between;
@@ -17,18 +26,29 @@
 }
 
 .single-image-portal {
-  border-radius: 0.2rem;
+  z-index: 9999;
+  // overflow: auto;
+  border-top-right-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
   padding: 1rem;
-  max-width: 1450px;
-  height: 95%;
+  max-width: 1650px;
   width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   margin: 0 auto;
+  margin-top: 16px;
   background-color: #fff;
+  inset: 0;
   z-index: 99999;
-  position: fixed;
+  color: #767676;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-thumb {
+    width: 4px;
+    margin: 1rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #d1d1d1;
+    border-radius: 2rem;
+  }
 
   & .profile-pic {
     gap: 8px;
@@ -57,16 +77,18 @@
     & .img-like,
     & .img-plus {
       cursor: pointer;
+      padding: 0 11px;
+      height: 32px;
       display: flex;
+      gap: 5px;
       justify-content: center;
       align-items: center;
-      padding: 5px 11px;
       background-color: #fff;
-      outline: none;
-      border: 1px solid rgba(118, 118, 118, 1);
-
-      fill: #767676;
-      border-radius: 0.2rem;
+      border-radius: 4px;
+      color: #767676;
+      fill: currentColor;
+      background: transparent;
+      border: 1px solid #d1d1d1;
 
       &:hover {
         border: 1px solid black;
@@ -76,16 +98,21 @@
 
     & .download-btn {
       cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      background-color: #fff;
-      outline: none;
-      border: 1px solid rgba(118, 118, 118, 1);
       color: #767676;
       fill: #767676;
       border-radius: 0.2rem;
+      padding: 0 11px;
+      height: 32px;
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 4px;
+      color: #767676;
+      fill: currentColor;
+      background: transparent;
+      border: 1px solid #d1d1d1;
       &:hover {
         border: 1px solid black;
         color: black;
@@ -96,12 +123,11 @@
       & .download-text {
         padding: 0 11px;
         height: 100%;
-        line-height: 33px;
+        line-height: 29px;
         border-right: 0.5px solid #d1d1d1;
       }
 
       & .downlaod-svg {
-        border-left: 0.5px solid #d1d1d1;
         padding: 8px;
         &:hover {
           fill: black;
@@ -111,9 +137,10 @@
   }
 
   .main-image-wrapper {
-    width: 1050px;
+    max-width: 1050px;
     height: 750px;
     margin: 0 auto;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,6 +151,88 @@
       max-height: 100%;
       width: auto;
       height: auto;
+    }
+  }
+
+  .image-description {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: fit-content(400px) 1fr auto;
+
+    & .img-desc-1 {
+      grid-row: 1/2;
+      grid-column: 1/2;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(min-content, 160px));
+      & .view {
+        display: flex;
+        flex-direction: column;
+      }
+      & .image-downlaods {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    & .img-desc-3 {
+      grid-row: 1/2;
+      grid-column: 3/4;
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 8px;
+
+      & button {
+        padding: 0 11px;
+        height: 32px;
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 4px;
+        color: #767676;
+        fill: currentColor;
+        background: transparent;
+        border: 1px solid #d1d1d1;
+
+        &:hover {
+          color: black;
+          border: 1px solid black;
+        }
+      }
+    }
+
+    & .img-desc-2 {
+      display: grid;
+      grid-row: 2/3;
+      grid-column: 1/2;
+      row-gap: 4px;
+
+      & .pub-date,
+      & .pub-policy,
+      & .camera-specs,
+      & .img-location {
+        display: flex;
+        justify-content: baseline;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  }
+
+  .related-images {
+    margin-inline: auto;
+    max-width: 1320px;
+    & h4 {
+      font-size: 18px;
+      margin-block: 12px;
+
+      padding-top: 5rem;
+      font-weight: 400;
     }
   }
 }
