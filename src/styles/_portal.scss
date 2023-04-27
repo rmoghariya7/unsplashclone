@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 200;
 }
 
 .outer {
@@ -17,7 +17,7 @@
   width: 100%;
   overflow: auto;
   inset: 0;
-  z-index: 999;
+  z-index: 201;
 }
 .image-info {
   display: flex;
@@ -26,7 +26,6 @@
 }
 
 .single-image-portal {
-  z-index: 9999;
   // overflow: auto;
   border-top-right-radius: 0.2rem;
   border-top-left-radius: 0.2rem;
@@ -37,7 +36,7 @@
   margin-top: 16px;
   background-color: #fff;
   inset: 0;
-  z-index: 99999;
+
   color: #767676;
 
   &::-webkit-scrollbar,
