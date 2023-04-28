@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Portal from "./Portal";
 import UserCollection from "./UserCollection";
+import { Blurhash } from "react-blurhash";
 
 const SingleImage = ({
   image,
@@ -9,8 +10,10 @@ const SingleImage = ({
   loading,
   hasMore,
   setPageNumber,
+  onClick,
 }) => {
   const [portalOpen, setPortalOpen] = useState(false);
+  const [isLoaded, setLoaded] = useState(false);
   const observer = useRef();
   const lastImgRef = useCallback(
     (node) => {
@@ -39,8 +42,15 @@ const SingleImage = ({
     <>
       {portalOpen && <Portal id={image.id} setPortalOpen={setPortalOpen} />}
       {index === lastImage ? (
-        <div ref={lastImgRef} className="last">
-          <img src={image?.urls?.regular} alt="img" />
+        <div
+          ref={lastImgRef}
+          className="last"
+          onClick={() => {
+            onClick(image.id);
+            setPortalOpen(true);
+          }}
+        >
+          <img src={image?.urls?.regular} alt="img" loading="lazy" />
 
           <div className="button-wrapper" onClick={() => setPortalOpen(true)}>
             <button className="img-like">
@@ -74,7 +84,15 @@ const SingleImage = ({
               <img src={image?.user?.profile_image?.small} alt="" />
               <span>{image?.user?.first_name}</span>
             </div>
-            <button className="download-btn">
+            <a
+              className="download-btn"
+              download
+              href={`${image?.links?.download}&force=true`}
+              rel="noreferrer"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <svg
                 width="15"
                 height="15"
@@ -85,12 +103,33 @@ const SingleImage = ({
                 <desc lang="en-US">Arrow pointing down</desc>
                 <path d="m19.35 11.625-5.85 5.4V1.5h-3v15.525l-5.85-5.4-2.025 2.25L12 22.425l9.375-8.55-2.025-2.25Z"></path>
               </svg>
-            </button>
+            </a>
           </div>
         </div>
       ) : (
-        <div onClick={() => setPortalOpen(true)}>
-          <img src={image?.urls?.regular} alt="img" />
+        <div
+          onClick={() => {
+            setPortalOpen(true);
+            onClick(image.id);
+          }}
+        >
+          <img
+            src={image?.urls?.regular}
+            alt="img"
+            loading="lazy"
+            onLoad={() => setLoaded(true)}
+          />
+
+          {!isLoaded && (
+            <Blurhash
+              hash={image?.blur_hash}
+              width={400}
+              height={300}
+              resolutionX={32}
+              resolutionY={32}
+              punch={1}
+            />
+          )}
 
           <div className="button-wrapper">
             <button className="img-like">
@@ -128,7 +167,7 @@ const SingleImage = ({
             <a
               className="download-btn"
               download
-              href={`${image.links.download}&force=true`}
+              href={`${image?.links?.download}&force=true`}
               rel="noreferrer"
               onClick={(e) => {
                 e.stopPropagation();

@@ -60,6 +60,7 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
   }
   & .svg-wrapper {
     position: relative;
@@ -74,5 +75,6 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
   }
 }

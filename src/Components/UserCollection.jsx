@@ -3,17 +3,18 @@ import demo1 from "../Assets/demo1.jpg";
 
 const UserCollection = ({ collection }) => {
   return (
-    <div className="grid-collection">
-      <div>
-        <img src={demo1} alt={demo1} />
-      </div>
-      <div>
-        <img src={demo1} alt={demo1} />
-      </div>
-      <div>
-        <img src={demo1} alt={demo1} />
-      </div>
-    </div>
+    <h1></h1>
+    // <div className="grid-collection">
+    //   <div>
+    //     <img src={demo1} alt={demo1} />
+    //   </div>
+    //   <div>
+    //     <img src={demo1} alt={demo1} />
+    //   </div>
+    //   <div>
+    //     <img src={demo1} alt={demo1} />
+    //   </div>
+    // </div>
   );
 };
 

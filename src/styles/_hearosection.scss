@@ -7,7 +7,7 @@
     display: inline-block;
     width: 100%;
     background-size: auto;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
     position: relative;
     transition: all 100ms ease-in-out;
 
@@ -27,7 +27,7 @@
     & .button-wrapper {
       display: flex;
       position: absolute;
-      top: 1rem;
+      top: 0.5rem;
       right: 1rem;
       justify-content: end;
       gap: 0.5rem;
@@ -56,7 +56,7 @@
       padding: 0 1rem;
       display: flex;
       position: absolute;
-      bottom: 0;
+      bottom: 2rem;
       justify-content: space-around;
       align-items: center;
       color: #fff;
@@ -89,5 +89,20 @@
         transition: all 100ms ease-in-out;
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    column-count: 2;
+    column-gap: 24px;
+    margin-top: 3rem;
+  }
+}
+@media screen and (max-width: 456px) {
+  .grid-container {
+    column-count: 1;
+    column-gap: 24px;
+    margin-top: 3rem;
   }
 }

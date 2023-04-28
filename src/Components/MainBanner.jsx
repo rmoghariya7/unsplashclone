@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+const secretKey = process.env.REACT_APP_ACCESS_KEY;
+const MainBanner = ({ setQuery, query }) => {
+  const [banner, setBanner] = useState({});
 
-const MainBanner = ({ imgCategory, image }) => {
+  const fetchBanner = async () => {
+    setBanner({});
+    const response = await fetch(
+      `https://api.unsplash.com/photos/random?client_id=${secretKey}&query=${
+        query ? query : "editorial"
+      }&orientation=landscape`
+    );
+    const data = await response.json();
+    setBanner(data);
+  };
+  // useEffect(() => {
+  //   fetchBanner();
+  // }, [query]);
   return (
     <>
-      <div
-        className="main-banner"
-        style={{
-          backgroundImage: `linear-gradient(90deg,rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%),url(${image?.urls?.full})`,
-        }}
-      >
+      <div className="main-banner">
+        <LazyLoadImage
+          effect="blur"
+          placeholderSrc={banner?.urls?.small}
+          src={banner?.urls?.full}
+          alt=""
+          width={"100%"}
+          height={"100%"}
+          style={{ position: "absolute" }}
+        />
+
         <div className="center-div">
           <h1>Unsplash</h1>
           <p className="heading">The internet’s source for visuals.</p>
@@ -27,7 +49,14 @@ const MainBanner = ({ imgCategory, image }) => {
                 <path d="M16.5 15c.9-1.2 1.5-2.8 1.5-4.5C18 6.4 14.6 3 10.5 3S3 6.4 3 10.5 6.4 18 10.5 18c1.7 0 3.2-.5 4.5-1.5l4.6 4.5 1.4-1.5-4.5-4.5zm-6 1c-3 0-5.5-2.5-5.5-5.5S7.5 5 10.5 5 16 7.5 16 10.5 13.5 16 10.5 16z"></path>
               </svg>
             </div>
-            <input type="text" placeholder="Search High-Resolution Images" />
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setQuery(e.target[0].value);
+              }}
+            >
+              <input type="text" placeholder="Search High-Resolution Images" />
+            </form>
             <div className="img-wrapper">
               <svg
                 width="20"
@@ -46,7 +75,7 @@ const MainBanner = ({ imgCategory, image }) => {
 
         <div className="main-banner-footer">
           <div>
-            <span>Photo</span> by <span>SomeOne</span>
+            <span>Photo</span> by <span>{banner?.user?.username}</span>
           </div>
           <div className="license">
             Read more about the <span>Unsplash License</span>

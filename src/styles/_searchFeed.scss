@@ -1,0 +1,15 @@
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+
+  h2 {
+    text-transform: capitalize;
+    margin-top: 1.5rem;
+  }
+
+  & .grid-collection {
+    display: grid;
+    max-width: 300px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
