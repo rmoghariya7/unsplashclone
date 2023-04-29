@@ -10,7 +10,7 @@ const SingleImage = ({
   loading,
   hasMore,
   setPageNumber,
-  onClick,
+  getimgID,
 }) => {
   const [portalOpen, setPortalOpen] = useState(false);
   const [isLoaded, setLoaded] = useState(false);
@@ -46,13 +46,13 @@ const SingleImage = ({
           ref={lastImgRef}
           className="last"
           onClick={() => {
-            onClick(image.id);
+            getimgID(image.id);
             setPortalOpen(true);
           }}
         >
           <img src={image?.urls?.regular} alt="img" loading="lazy" />
 
-          <div className="button-wrapper" onClick={() => setPortalOpen(true)}>
+          <div className="button-wrapper">
             <button className="img-like">
               <svg
                 width="15"
@@ -109,8 +109,8 @@ const SingleImage = ({
       ) : (
         <div
           onClick={() => {
+            getimgID(image.id);
             setPortalOpen(true);
-            onClick(image.id);
           }}
         >
           <img

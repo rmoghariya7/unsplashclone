@@ -2,7 +2,14 @@ import React from "react";
 import SingleImage from "./SingleImage";
 import { v4 as uuidv4 } from "uuid";
 
-const HeroSection = ({ images, loading, setPageNumber, hasMore }) => {
+const HeroSection = ({
+  images,
+  loading,
+  setPageNumber,
+  hasMore,
+  getimgID,
+  ID,
+}) => {
   return (
     <>
       <div className="grid-container">
@@ -15,6 +22,8 @@ const HeroSection = ({ images, loading, setPageNumber, hasMore }) => {
             loading={loading}
             setPageNumber={setPageNumber}
             hasMore={hasMore}
+            getimgID={getimgID}
+            ID={ID}
           />
         ))}
       </div>

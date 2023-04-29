@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 const secretKey = process.env.REACT_APP_ACCESS_KEY;
-const MainBanner = ({ setQuery, query }) => {
+const MainBanner = ({ onChange, query }) => {
   const [banner, setBanner] = useState({});
 
   const fetchBanner = async () => {
@@ -15,9 +15,9 @@ const MainBanner = ({ setQuery, query }) => {
     const data = await response.json();
     setBanner(data);
   };
-  // useEffect(() => {
-  //   fetchBanner();
-  // }, [query]);
+  useEffect(() => {
+    fetchBanner();
+  }, [query]);
   return (
     <>
       <div className="main-banner">
@@ -52,7 +52,7 @@ const MainBanner = ({ setQuery, query }) => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                setQuery(e.target[0].value);
+                onChange(e.target[0].value);
               }}
             >
               <input type="text" placeholder="Search High-Resolution Images" />

@@ -18,6 +18,7 @@ function App() {
   const [imgCategory, setImgCategory] = useState("Editorial");
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
+  const [ID, setID] = useState("");
   const { loading, images, hasMore, setImages, banner } = useFetchApi(
     query,
     pageNumber
@@ -32,6 +33,10 @@ function App() {
     setPageNumber(1);
     setQuery(e);
     navigate(`/${e}`);
+  };
+
+  const getimgID = (id) => {
+    setID(id);
   };
 
   return (
@@ -49,13 +54,19 @@ function App() {
           path="/"
           element={
             <>
-              <MainBanner setQuery={setQuery} banner={banner} query={query} />
+              <MainBanner
+                onChange={handleChange}
+                banner={banner}
+                query={query}
+              />
               <main className="main_outer_container">
                 <HeroSection
                   images={images}
                   loading={loading}
                   setPageNumber={setPageNumber}
                   hasMore={hasMore}
+                  getimgID={getimgID}
+                  ID={ID}
                 />
               </main>
             </>
@@ -68,6 +79,7 @@ function App() {
               query={query}
               isClick={isClick}
               setIsClick={setIsClick}
+              ID={ID}
             />
           }
         />

@@ -6,11 +6,11 @@ import SingleImage from "./SingleImage";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Portal from "./Portal";
 
-const SearchFeed = ({ setPage, isClick, setIsClick }) => {
+const SearchFeed = ({ setPage, isClick, setIsClick, getimgID, ID }) => {
   const [queryImages, setQueryImages] = useState([]);
   const [pageNumber, setQueryPageNumber] = useState(1);
   const [portalOpen, setPortalOpen] = useState(false);
-  const [ID, setID] = useState("");
+
   const params = useParams();
   const fetchQueryReq = async (signal) => {
     const response = await fetch(
@@ -44,9 +44,7 @@ const SearchFeed = ({ setPage, isClick, setIsClick }) => {
       body.style.overflow = portalOpen ? "hidden" : "auto";
     }
   }, [portalOpen, pageNumber]);
-  const getimgID = (id) => {
-    setID(id);
-  };
+
   return (
     <div className="container">
       <h2>{params?.query}</h2>
@@ -68,7 +66,7 @@ const SearchFeed = ({ setPage, isClick, setIsClick }) => {
           {portalOpen && <Portal id={ID} setPortalOpen={setPortalOpen} />}
           {queryImages?.map((image, index) => (
             <>
-              <SingleImage image={image} key={uuidv4()} onClick={getimgID} />
+              <SingleImage image={image} key={uuidv4()} getimgID={getimgID} />
             </>
           ))}
         </InfiniteScroll>
