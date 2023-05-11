@@ -194,6 +194,11 @@
   padding: 1rem 0;
   cursor: pointer;
 }
+.subNavWrapper ul a {
+  list-style: none;
+  text-decoration: none;
+  color: inherit;
+}
 .subNavWrapper ul li.active::before {
   content: "";
   width: 100%;
@@ -333,6 +338,7 @@
 }
 .main-banner .main-banner-footer span {
   color: #fff;
+  cursor: pointer;
 }
 .main-banner .main-banner-footer .license {
   place-self: center;

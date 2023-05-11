@@ -18,6 +18,11 @@
     padding: 1rem 0;
     cursor: pointer;
   }
+  & ul a {
+    list-style: none;
+    text-decoration: none;
+    color: inherit;
+  }
 
   & ul li.active::before {
     content: "";

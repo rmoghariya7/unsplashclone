@@ -1,5 +1,4 @@
 import React from "react";
-import demo1 from "../Assets/demo1.jpg";
 
 const UserCollection = ({ collection }) => {
   return (

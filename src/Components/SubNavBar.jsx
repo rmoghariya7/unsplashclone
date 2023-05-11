@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { NavLink } from "react-router-dom";
+
 const SubNavBar = ({
   CATEGORIES,
   setImgCategory,
@@ -75,31 +77,34 @@ const SubNavBar = ({
       <ul className="dynamic-ul">
         {CATEGORIES.map((category, index) =>
           CATEGORIES.length - 1 === index ? (
-            <li
-              ref={subNavRef}
-              className={index === active ? "active" : ""}
-              onClick={() => handleClick(index)}
-              key={uuidv4()}
-            >
-              {category}
-            </li>
+            <NavLink to={"/"} key={uuidv4()}>
+              <li
+                ref={subNavRef}
+                className={index === active ? "active" : ""}
+                onClick={() => handleClick(index)}
+              >
+                {category}
+              </li>
+            </NavLink>
           ) : index === 0 ? (
-            <li
-              ref={subNavRef2}
-              className={index === active ? "active" : ""}
-              onClick={() => handleClick(index)}
-              key={uuidv4()}
-            >
-              {category}
-            </li>
+            <NavLink to={"/"} key={uuidv4()}>
+              <li
+                ref={subNavRef2}
+                className={index === active ? "active" : ""}
+                onClick={() => handleClick(index)}
+              >
+                {category}
+              </li>
+            </NavLink>
           ) : (
-            <li
-              className={index === active ? "active" : ""}
-              onClick={() => handleClick(index)}
-              key={uuidv4()}
-            >
-              {category}
-            </li>
+            <NavLink to={"/"} key={uuidv4()}>
+              <li
+                className={index === active ? "active" : ""}
+                onClick={() => handleClick(index)}
+              >
+                {category}
+              </li>
+            </NavLink>
           )
         )}
       </ul>
