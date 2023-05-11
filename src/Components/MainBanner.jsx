@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import AltImg from "../Assets/alt-back.png";
-import { AiOutlineSearch } from "react-icons/ai";
-import { SiGooglelens } from "react-icons/si";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import AltImg from '../Assets/alt-back.png';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { SiGooglelens } from 'react-icons/si';
 
 const secretKey = process.env.REACT_APP_ACCESS_KEY;
 const MainBanner = ({ onChange, query }) => {
@@ -11,7 +12,7 @@ const MainBanner = ({ onChange, query }) => {
     setBanner(null);
     const response = await fetch(
       `https://api.unsplash.com/photos/random?client_id=${secretKey}&query=${
-        query ? query : "editorial"
+        query ? query : 'editorial'
       }&orientation=landscape`,
       { signal }
     );
@@ -28,15 +29,15 @@ const MainBanner = ({ onChange, query }) => {
   }, [query]);
   return (
     <>
-      <div className="main-banner">
-        <img src={banner === null ? AltImg : banner?.urls?.full} alt="" />
+      <div className='main-banner'>
+        <img src={banner === null ? AltImg : banner?.urls?.full} alt='' />
 
-        <div className="center-div">
+        <div className='center-div'>
           <h1>Unsplash</h1>
-          <p className="heading">The internet’s source for visuals.</p>
-          <p className="heading2">Powered by creators everywhere.</p>
-          <div className="search-bar">
-            <div className="img-wrapper">
+          <p className='heading'>The internet’s source for visuals.</p>
+          <p className='heading2'>Powered by creators everywhere.</p>
+          <div className='search-bar'>
+            <div className='img-wrapper'>
               <AiOutlineSearch />
               {/* <img src={MagnifyGlass} alt="" /> */}
             </div>
@@ -46,19 +47,19 @@ const MainBanner = ({ onChange, query }) => {
                 onChange(e.target[0].value);
               }}
             >
-              <input type="text" placeholder="Search High-Resolution Images" />
+              <input type='text' placeholder='Search High-Resolution Images' />
             </form>
-            <div className="img-wrapper">
+            <div className='img-wrapper'>
               <SiGooglelens />
             </div>
           </div>
         </div>
 
-        <div className="main-banner-footer">
+        <div className='main-banner-footer'>
           <div>
             <span>Photo</span> by <span>{banner?.user?.username}</span>
           </div>
-          <div className="license">
+          <div className='license'>
             Read more about the <span>Unsplash License</span>
           </div>
         </div>

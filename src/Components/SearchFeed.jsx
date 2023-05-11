@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { v4 as uuidv4 } from "uuid";
-import SingleImage from "./SingleImage";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Portal from "./Portal";
+import { v4 as uuidv4 } from 'uuid';
+import SingleImage from './SingleImage';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Portal from './Portal';
 
 const SearchFeed = ({ setPage, isClick, setIsClick, getimgID, ID }) => {
   const [queryImages, setQueryImages] = useState([]);
@@ -37,16 +37,17 @@ const SearchFeed = ({ setPage, isClick, setIsClick, getimgID, ID }) => {
     return () => {
       controller.abort();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, params]);
   useEffect(() => {
     if (setQueryPageNumber) {
-      const body = document.querySelector("body");
-      body.style.overflow = portalOpen ? "hidden" : "auto";
+      const body = document.querySelector('body');
+      body.style.overflow = portalOpen ? 'hidden' : 'auto';
     }
   }, [portalOpen, pageNumber]);
 
   return (
-    <div className="container">
+    <div className='container'>
       <h2>{params?.query}</h2>
 
       <div>
@@ -57,11 +58,11 @@ const SearchFeed = ({ setPage, isClick, setIsClick, getimgID, ID }) => {
           hasMore={true}
           loader={<h4>Loading...</h4>}
           endMessage={
-            <p style={{ textAlign: "center" }}>
+            <p style={{ textAlign: 'center' }}>
               <b>Yay! You have seen it all</b>
             </p>
           }
-          className="grid-container"
+          className='grid-container'
         >
           {portalOpen && <Portal id={ID} setPortalOpen={setPortalOpen} />}
           {queryImages?.map((image, index) => (
