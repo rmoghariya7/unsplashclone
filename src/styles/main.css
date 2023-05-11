@@ -69,13 +69,15 @@
   border-radius: 0.25rem;
   white-space: nowrap;
 }
-.nav-container .search-svg, .nav-container .google-lens, .nav-container .bell {
+.nav-container .search-svg,
+.nav-container .google-lens,
+.nav-container .bell {
   fill: #767676;
 }
 .nav-container .unsplash-plus {
   background: linear-gradient(135deg, #fa00ff, #00e0ff 50%, #fa00ff);
   -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 .nav-container .main-menu-wrapper {
@@ -148,7 +150,11 @@
   .nav-container .links {
     display: flex;
   }
-  .nav-container .links ul .advertise-li, .nav-container .links ul .blog-li, .nav-container .links ul .submit-btn-li, .nav-container .links ul .bell-li, .nav-container .links ul .unsplash-plus {
+  .nav-container .links ul .advertise-li,
+  .nav-container .links ul .blog-li,
+  .nav-container .links ul .submit-btn-li,
+  .nav-container .links ul .bell-li,
+  .nav-container .links ul .unsplash-plus {
     display: none;
   }
 }
@@ -200,7 +206,7 @@
   color: inherit;
 }
 .subNavWrapper ul li.active::before {
-  content: "";
+  content: '';
   width: 100%;
   position: absolute;
   height: 2px;
@@ -273,7 +279,7 @@
   height: 100%;
   position: absolute;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: -1;
 }
 .main-banner .center-div {
@@ -361,9 +367,9 @@
 }
 .grid-container {
   -moz-column-count: 3;
-       column-count: 3;
+  column-count: 3;
   -moz-column-gap: 24px;
-       column-gap: 24px;
+  column-gap: 24px;
   margin-top: 3rem;
 }
 .grid-container div {
@@ -390,12 +396,13 @@
   position: absolute;
   top: 0.5rem;
   right: 1rem;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 0.5rem;
   z-index: 30;
   opacity: 0;
 }
-.grid-container div .button-wrapper .img-like, .grid-container div .button-wrapper .img-plus {
+.grid-container div .button-wrapper .img-like,
+.grid-container div .button-wrapper .img-plus {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -448,18 +455,18 @@
 @media screen and (max-width: 768px) {
   .grid-container {
     -moz-column-count: 2;
-         column-count: 2;
+    column-count: 2;
     -moz-column-gap: 24px;
-         column-gap: 24px;
+    column-gap: 24px;
     margin-top: 3rem;
   }
 }
 @media screen and (max-width: 456px) {
   .grid-container {
     -moz-column-count: 1;
-         column-count: 1;
+    column-count: 1;
     -moz-column-gap: 24px;
-         column-gap: 24px;
+    column-gap: 24px;
     margin-top: 3rem;
   }
 }
@@ -503,7 +510,8 @@
   inset: 0;
   color: #767676;
 }
-.single-image-portal::-webkit-scrollbar, .single-image-portal::-webkit-scrollbar-thumb {
+.single-image-portal::-webkit-scrollbar,
+.single-image-portal::-webkit-scrollbar-thumb {
   width: 4px;
   margin: 1rem;
 }
@@ -534,7 +542,8 @@
   display: flex;
   gap: 0.5rem;
 }
-.single-image-portal .cta .img-like, .single-image-portal .cta .img-plus {
+.single-image-portal .cta .img-like,
+.single-image-portal .cta .img-plus {
   cursor: pointer;
   padding: 0 11px;
   height: 32px;
@@ -549,7 +558,8 @@
   background: transparent;
   border: 1px solid #d1d1d1;
 }
-.single-image-portal .cta .img-like:hover, .single-image-portal .cta .img-plus:hover {
+.single-image-portal .cta .img-like:hover,
+.single-image-portal .cta .img-plus:hover {
   border: 1px solid black;
   fill: black;
 }
@@ -635,7 +645,7 @@
   display: grid;
   grid-auto-flow: column;
   -moz-column-gap: 8px;
-       column-gap: 8px;
+  column-gap: 8px;
 }
 .single-image-portal .image-description .img-desc-3 button {
   padding: 0 11px;
@@ -661,7 +671,10 @@
   grid-column: 1/2;
   row-gap: 4px;
 }
-.single-image-portal .image-description .img-desc-2 .pub-date, .single-image-portal .image-description .img-desc-2 .pub-policy, .single-image-portal .image-description .img-desc-2 .camera-specs, .single-image-portal .image-description .img-desc-2 .img-location {
+.single-image-portal .image-description .img-desc-2 .pub-date,
+.single-image-portal .image-description .img-desc-2 .pub-policy,
+.single-image-portal .image-description .img-desc-2 .camera-specs,
+.single-image-portal .image-description .img-desc-2 .img-location {
   display: flex;
   justify-content: baseline;
   align-items: center;
@@ -696,4 +709,4 @@
   display: grid;
   max-width: 300px;
   grid-template-columns: 1fr 1fr;
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */
