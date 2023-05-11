@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 const secretKey = process.env.REACT_APP_ACCESS_KEY;
 
 const useFetchApi = (query, pageNumber) => {
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore] = useState(true);
 
   useEffect(() => {
     setLoading(true);
