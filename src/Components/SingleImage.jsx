@@ -12,7 +12,7 @@ const SingleImage = ({
   getimgID,
 }) => {
   const [portalOpen, setPortalOpen] = useState(false);
-  const [isLoaded, setLoaded] = useState(false);
+  // const [isLoaded, setLoaded] = useState(false);
   const observer = useRef();
   const lastImgRef = useCallback(
     (node) => {
@@ -117,7 +117,7 @@ const SingleImage = ({
             src={image?.urls?.regular}
             alt='img'
             loading='lazy'
-            onLoad={() => setLoaded(true)}
+{/*             onLoad={() => setLoaded(true)} */}
           />
 
 {/*           {!isLoaded && (
