@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Portal from './Portal';
-import { Blurhash } from 'react-blurhash';
+// import { Blurhash } from 'react-blurhash';
 
 const SingleImage = ({
   image,
