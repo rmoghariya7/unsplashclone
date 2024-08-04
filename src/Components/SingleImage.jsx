@@ -120,7 +120,7 @@ const SingleImage = ({
             onLoad={() => setLoaded(true)}
           />
 
-          {!isLoaded && (
+{/*           {!isLoaded && (
             <Blurhash
               hash={image?.blur_hash}
               width={400}
@@ -129,7 +129,7 @@ const SingleImage = ({
               resolutionY={32}
               punch={1}
             />
-          )}
+          )} */}
 
           <div className='button-wrapper'>
             <button className='img-like'>
