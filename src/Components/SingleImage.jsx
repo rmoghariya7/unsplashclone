@@ -12,7 +12,6 @@ const SingleImage = ({
   getimgID,
 }) => {
   const [portalOpen, setPortalOpen] = useState(false);
-  // const [isLoaded, setLoaded] = useState(false);
   const observer = useRef();
   const lastImgRef = useCallback(
     (node) => {
@@ -117,20 +116,7 @@ const SingleImage = ({
             src={image?.urls?.regular}
             alt='img'
             loading='lazy'
-{/*             onLoad={() => setLoaded(true)} */}
           />
-
-{/*           {!isLoaded && (
-            <Blurhash
-              hash={image?.blur_hash}
-              width={400}
-              height={300}
-              resolutionX={32}
-              resolutionY={32}
-              punch={1}
-            />
-          )} */}
-
           <div className='button-wrapper'>
             <button className='img-like'>
               <svg
